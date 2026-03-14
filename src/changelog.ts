@@ -1,6 +1,13 @@
-export const APP_VERSION = '260315'
+export const APP_VERSION = '260315.2'
 
 export const changelog = [
+  {
+    version: '260315.2',
+    date: '15.03.2026',
+    changes: [
+      'Перенос Firebase-конфига в .env (секреты больше не в коде)',
+    ],
+  },
   {
     version: '260315',
     date: '15.03.2026',
