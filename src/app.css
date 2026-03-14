@@ -1,0 +1,106 @@
+/* Импорт Tailwind CSS v4 */
+@import "tailwindcss";
+
+/* Ручное переключение тёмной темы через класс .dark */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Дизайн-токены для Tailwind (генерируют утилити-классы) */
+@theme {
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-full: 999px;
+}
+
+/* Светлая тема (по умолчанию) */
+:root {
+  --color-primary: #4A5578;
+  --color-primary-light: #5C6BC0;
+  --color-screen-bg: #F0F1F5;
+  --color-card-bg: #FFFFFF;
+  --color-card-border: transparent;
+  --color-text-primary: #2D3142;
+  --color-text-secondary: #6B7189;
+  --color-header-bg: #4A5578;
+  --color-header-text: #FFFFFF;
+  --color-shadow: rgba(74, 85, 120, 0.08);
+  --color-input-bg: #F5F6FA;
+  --color-input-border: #D8DAE5;
+  --color-divider: #E4E6EF;
+
+  /* Статусные цвета */
+  --color-status-overdue: #B05A5A;
+  --color-status-urgent: #C07A4E;
+  --color-status-soon: #B89B4E;
+  --color-status-normal: #5C6BC0;
+  --color-status-good: #5B8A72;
+  --color-status-frozen: #5A9BAD;
+  --color-status-archived: #8D90A1;
+}
+
+/* Тёмная тема */
+.dark {
+  --color-primary: #1A1D2E;
+  --color-primary-light: #7986CB;
+  --color-screen-bg: #111318;
+  --color-card-bg: #1E2030;
+  --color-card-border: rgba(255, 255, 255, 0.06);
+  --color-text-primary: #E0E1E6;
+  --color-text-secondary: #9496A8;
+  --color-header-bg: #1A1D2E;
+  --color-header-text: #E0E1E6;
+  --color-shadow: transparent;
+  --color-input-bg: #252839;
+  --color-input-border: rgba(255, 255, 255, 0.08);
+  --color-divider: rgba(255, 255, 255, 0.06);
+
+  /* Статусные цвета — чуть ярче для тёмного фона */
+  --color-status-overdue: #CF6B6B;
+  --color-status-urgent: #D4935E;
+  --color-status-soon: #CCAD5E;
+  --color-status-normal: #7986CB;
+  --color-status-good: #6FA383;
+  --color-status-frozen: #6BB0C2;
+  --color-status-archived: #A0A3B4;
+}
+
+/* Базовые стили */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: var(--color-screen-bg);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Запрет на выделение текста при долгом нажатии (для PWA-ощущения) */
+  -webkit-user-select: none;
+  user-select: none;
+  /* Запрет на pull-to-refresh браузера (мы сделаем свой) */
+  overscroll-behavior: none;
+}
+
+/* Разрешаем выделение в полях ввода */
+input, textarea, [contenteditable] {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+/* Скрываем скроллбар но оставляем прокрутку */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
