@@ -1,9 +1,9 @@
-export const APP_VERSION = '260314.7'
+export const APP_VERSION = '260315.7'
 
 export const changelog = [
   {
-    version: '260314.7',
-    date: '14.03.2026',
+    version: '260315.7',
+    date: '15.03.2026',
     changes: [
       'AddClientPage: форма добавления клиента с компактной раскладкой (поля в ряд по 2)',
       'DatePickerField: поле выбора даты с нативным пикером и русским отображением',
