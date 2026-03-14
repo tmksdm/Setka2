@@ -1,6 +1,14 @@
-export const APP_VERSION = '260315.3'
+export const APP_VERSION = '260315.4'
 
 export const changelog = [
+  {
+    version: '260315.4',
+    date: '15.03.2026',
+    changes: [
+      'dateHelpers: работа с датами (формат, подсчёт дней, склонение, валидация)',
+      'clientStatus: определение статуса клиента, сортировка по срочности, подсчёт горящих',
+    ],
+  },
   {
     version: '260315.3',
     date: '15.03.2026',
