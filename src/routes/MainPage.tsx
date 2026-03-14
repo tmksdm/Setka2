@@ -28,9 +28,10 @@ import type { Client } from '../types'
 
 interface MainPageProps {
   onNavigateToAddClient: () => void
+  onNavigateToEditClient: (clientId: string) => void
 }
 
-export default function MainPage({ onNavigateToAddClient }: MainPageProps) {
+export default function MainPage({ onNavigateToAddClient, onNavigateToEditClient }: MainPageProps) {
   const { user, logout } = useAuth()
 
   // Состояния
@@ -111,10 +112,9 @@ export default function MainPage({ onNavigateToAddClient }: MainPageProps) {
     console.log('Навигация:', page)
   }
 
-  // Нажатие на карточку клиента (пока заглушка)
+  // Нажатие на карточку клиента → переход на редактирование
   const handleClientClick = (client: Client) => {
-    // TODO: навигация на EditClientPage (шаг 10)
-    console.log('Открыть клиента:', client.id)
+    onNavigateToEditClient(client.id)
   }
 
   return (

@@ -6,12 +6,14 @@ import { useAuth } from './context/AuthContext'
 import LoginPage from './routes/LoginPage'
 import MainPage from './routes/MainPage'
 import AddClientPage from './routes/AddClientPage'
+import EditClientPage from './routes/EditClientPage'
 import { Loader2 } from 'lucide-react'
 
 // Типы экранов приложения
 type Screen =
   | { name: 'main' }
   | { name: 'addClient' }
+  | { name: 'editClient'; clientId: string }
 
 function App() {
   const { user, loading } = useAuth()
@@ -27,14 +29,17 @@ function App() {
     setScreen({ name: 'main' })
   }, [])
 
+  const goToMainAndRefresh = useCallback(() => {
+    setRefreshKey((k) => k + 1)
+    setScreen({ name: 'main' })
+  }, [])
+
   const goToAddClient = useCallback(() => {
     setScreen({ name: 'addClient' })
   }, [])
 
-  // Клиент создан — вернуться на главную и обновить список
-  const handleClientCreated = useCallback(() => {
-    setRefreshKey((k) => k + 1)
-    setScreen({ name: 'main' })
+  const goToEditClient = useCallback((clientId: string) => {
+    setScreen({ name: 'editClient', clientId })
   }, [])
 
   // Экран загрузки (пока Firebase проверяет, вошёл ли пользователь)
@@ -64,7 +69,29 @@ function App() {
       return (
         <AddClientPage
           onBack={goToMain}
-          onCreated={handleClientCreated}
+          onCreated={goToMainAndRefresh}
+        />
+      )
+
+    case 'editClient':
+      return (
+        <EditClientPage
+          clientId={screen.clientId}
+          onBack={goToMain}
+          onDeleted={goToMainAndRefresh}
+          onUpdated={goToMainAndRefresh}
+          onRenew={(id) => {
+            // TODO: шаг 11 — экран продления
+            console.log('Продление:', id)
+          }}
+          onHistory={(id) => {
+            // TODO: шаг 12 — история платежей
+            console.log('История:', id)
+          }}
+          onFreeze={(id) => {
+            // TODO: шаг 14 — заморозка
+            console.log('Заморозка:', id)
+          }}
         />
       )
 
@@ -74,6 +101,7 @@ function App() {
         <MainPage
           key={refreshKey}
           onNavigateToAddClient={goToAddClient}
+          onNavigateToEditClient={goToEditClient}
         />
       )
   }
