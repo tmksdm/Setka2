@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Переменные окружения (секреты)
+.env
+.env.local
+.env.*.local
