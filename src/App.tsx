@@ -1,7 +1,8 @@
-// Главный компонент приложения — роутинг и проверка авторизации
+// Главный компонент приложения — проверка авторизации и показ нужного экрана
 
 import { useAuth } from './context/AuthContext'
 import LoginPage from './routes/LoginPage'
+import MainPage from './routes/MainPage'
 import { Loader2 } from 'lucide-react'
 
 function App() {
@@ -28,32 +29,8 @@ function App() {
     return <LoginPage />
   }
 
-  // Вошёл — показываем приложение (пока заглушка)
-  return (
-    <div
-      className="min-h-screen flex flex-col items-center justify-center px-6"
-      style={{ backgroundColor: 'var(--color-screen-bg)' }}
-    >
-      <h1
-        className="text-2xl font-bold mb-2"
-        style={{ color: 'var(--color-text-primary)' }}
-      >
-        Сетка
-      </h1>
-      <p
-        className="text-sm mb-6"
-        style={{ color: 'var(--color-text-secondary)' }}
-      >
-        Привет, {user.displayName || user.email}!
-      </p>
-      <p
-        className="text-xs"
-        style={{ color: 'var(--color-text-secondary)' }}
-      >
-        Главный экран будет здесь
-      </p>
-    </div>
-  )
+  // Вошёл — показываем главный экран
+  return <MainPage />
 }
 
 export default App
