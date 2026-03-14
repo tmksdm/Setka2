@@ -26,7 +26,11 @@ import {
 import { pluralizeClients } from '../lib/dateHelpers'
 import type { Client } from '../types'
 
-export default function MainPage() {
+interface MainPageProps {
+  onNavigateToAddClient: () => void
+}
+
+export default function MainPage({ onNavigateToAddClient }: MainPageProps) {
   const { user, logout } = useAuth()
 
   // Состояния
@@ -107,15 +111,9 @@ export default function MainPage() {
     console.log('Навигация:', page)
   }
 
-  // Переход к добавлению клиента (пока заглушка)
-  const handleAddClient = () => {
-    // TODO: навигация на AddClientPage
-    console.log('Добавить клиента')
-  }
-
   // Нажатие на карточку клиента (пока заглушка)
   const handleClientClick = (client: Client) => {
-    // TODO: навигация на EditClientPage
+    // TODO: навигация на EditClientPage (шаг 10)
     console.log('Открыть клиента:', client.id)
   }
 
@@ -130,7 +128,7 @@ export default function MainPage() {
             {/* Кнопка «+» — добавить клиента */}
             <button
               type="button"
-              onClick={handleAddClient}
+              onClick={onNavigateToAddClient}
               className="w-9 h-9 flex items-center justify-center rounded-full cursor-pointer active:opacity-70 transition-opacity"
               style={{
                 backgroundColor: 'rgba(255, 255, 255, 0.15)',
