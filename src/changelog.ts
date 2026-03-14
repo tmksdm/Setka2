@@ -1,6 +1,18 @@
-export const APP_VERSION = '260315.4'
+export const APP_VERSION = '260315.5'
 
 export const changelog = [
+  {
+    version: '260315.5',
+    date: '15.03.2026',
+    changes: [
+      'firestoreHelpers: CRUD клиентов (создание, чтение, обновление, удаление)',
+      'firestoreHelpers: массовые операции (удаление, архивация, восстановление — batch)',
+      'firestoreHelpers: продление оплаты с умной логикой накопления',
+      'firestoreHelpers: заморозка, досрочная разморозка, автоматическая разморозка',
+      'firestoreHelpers: CRUD тарифов',
+      'firestoreHelpers: импорт бэкапа (замена или добавление, чанки по 500)',
+    ],
+  },
   {
     version: '260315.4',
     date: '15.03.2026',
