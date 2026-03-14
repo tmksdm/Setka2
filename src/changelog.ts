@@ -1,6 +1,15 @@
-export const APP_VERSION = '260315.2'
+export const APP_VERSION = '260315.3'
 
 export const changelog = [
+  {
+    version: '260315.3',
+    date: '15.03.2026',
+    changes: [
+      'ThemeContext: переключение светлой/тёмной темы с сохранением в localStorage',
+      'TypeScript-типы: Client, Tariff, Payment, Freeze, Backup и все связанные',
+      'UI-компоненты: PageWrapper, AppHeader, Card, Button',
+    ],
+  },
   {
     version: '260315.2',
     date: '15.03.2026',
